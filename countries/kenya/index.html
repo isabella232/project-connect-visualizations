@@ -1,140 +1,134 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8' />
     <title>Kenya's school compare map</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css'
+        rel='stylesheet' type='text/css' />
     <style>
-                #history {
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #history {
             position: absolute;
             z-index: 1;
-            position: fixed;
-            bottom: 3%;
-            right: 0.85%;
+            /* position: fixed; */
+            bottom: 10px;
+            right: 10px;
             margin: 0;
-            font-size: 1.2em;
+            font-size: 12px;
             box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);
             border-radius: .25rem;
             background-color: whitesmoke;
-            padding: 1rem;
-            font-family: sans-serif;
-​
+            padding: 3px;
         }
-​
-        #history1 {
-            border-radius: .25rem;
-            position: absolute;
-            z-index: 1;
-            position: fixed;
-            bottom: 10%;
-            left: 0.85%;
-            font-size: 1.2em;
-            background-color: whitesmoke;
-            padding: 1rem;
-            font-family: sans-serif;
+
+
+        .mapboxgl-ctrl-attrib {
+            display: none;
         }
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
     </style>
 </head>
 <body>
-​
-    <div id="history" class="history">
-        <table width="300">
+    <div style="position: absolute; z-index: 99999; background-color: #ffffff; bottom:10px; left:10px; border-radius: .25rem; box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);" class="h_before">
+        <table width="200px">
             <tr>
-​
                 <td colspan="3" align="center">
-                    <font size="4"><strong>KENYA - ML SCHOOLS DETECTION</strong></font>
+                    <font size="2"><strong>KENYA - TRAINING DATA</strong></font>
                 </td>
-​
-            </tr>            
+            </tr>
             <tr>
                 <td>
-                    <div style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #fffb24"></div>
+                    <div
+                        style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #fd0808">
+                    </div>
+                </td>
+                </td>
+                <td style="font-size: 12px;">Known schools</td>
+                <td style="font-size: 12px;">20,422</td>
+            </tr>
+        </table>
+    </div>
+    ​
+    ​<div>
+        <div id='before' class='map'></div>
+        <div id='after' class='map'></div>
+
+    </div>
+
+    <div id="history" class="history">
+        <table width="200">
+            <tr>
+                <td colspan="3" align="center">
+                    <font size="2"><strong>KENYA - ML SCHOOLS DETECTION</strong></font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div
+                        style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #fffb24">
+                    </div>
                 </td>
                 <td>Unmaped schools</td>
                 <td>7,648</td>
             </tr>
             <tr>
                 <td>
-                    <div style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #00f2ff"></div>
+                    <div
+                        style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #00f2ff">
+                    </div>
                 </td>
                 <td>Reconfirmed schools</td>
                 <td>9,968</td>
             </tr>
             <tr>
                 <td>
-                    <div style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #fd0808"></div>
+                    <div
+                        style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #fd0808">
+                    </div>
                 </td>
-                <td>Know schools</td>
+                <td>Known schools</td>
                 <td>20,422</td>
             </tr>
         </table>
     </div>
-    <div id="history1" class="history1">
-        <table width="300">
-            <tr>
-                <td colspan="3" align="center">
-                    <font size="4"><strong>KENYA - TRAINING DATA</strong></font>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #fd0808"></div>
-                </td>
-                </td>
-                <td>Know schools</td>
-                <td>20,422</td>
-            </tr>
-        </table>
-    </div>
-    <img src="history.svg" alt="history" height="87px" width="100px" />
-​
-​
-<style>
-body {
-    overflow: hidden;
-}
-body * {
-   -webkit-touch-callout: none;
-     -webkit-user-select: none;
-        -moz-user-select: none;
-         -ms-user-select: none;
-             user-select: none;
-}
-.map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-}
-</style>
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
-<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css' type='text/css' />
-​
-<div id='before' class='map'></div>
-<div id='after' class='map'></div>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q';
-var beforeMap = new mapboxgl.Map({
-    container: 'before',
-    style: 'mapbox://styles/devseed/ckis8vwt60pvc19nnmpxcuza3',
-    center: [38.471, 0.319],
-    zoom: 6
-});
-var afterMap = new mapboxgl.Map({
-    container: 'after',
-    style: 'mapbox://styles/devseed/ckirid6ak006s19oej7tcjwq6',
-    center: [38.471, 0.319],
-    zoom: 6
-});
-var map = new mapboxgl.Compare(beforeMap, afterMap, {
-    // Set this to enable comparing two maps by mouse movement:
-    // mousemove: true
-});
-</script>
-​
+
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q';
+        var beforeMap = new mapboxgl.Map({
+            container: 'before',
+            style: 'mapbox://styles/devseed/ckis8vwt60pvc19nnmpxcuza3',
+            center: [38.471, 0.319],
+            zoom: 6
+        });
+        var afterMap = new mapboxgl.Map({
+            container: 'after',
+            style: 'mapbox://styles/devseed/ckirid6ak006s19oej7tcjwq6',
+            center: [38.471, 0.319],
+            zoom: 6
+        });
+        var map = new mapboxgl.Compare(beforeMap, afterMap, {
+            // Set this to enable comparing two maps by mouse movement:
+            // mousemove: true
+        });
+    </script>
+    ​
 </body>
+
 </html>
