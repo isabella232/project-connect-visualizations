@@ -293,7 +293,8 @@ gulp.task('extras', function () {
     '!app/assets/scripts/**',
     '!app/posts/**',
     '!app/layouts/**',
-    '!app/includes/**'
+    '!app/includes/**',
+    '!app/countries/**'
   ], {
     dot: true
   }).pipe(gulp.dest('build'));
