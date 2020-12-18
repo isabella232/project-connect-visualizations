@@ -1,7 +1,7 @@
 module.exports = {
   baseurl: 'http://devseed.com/project-connect-visualizations',
   title: 'Project connect vizualizations',
-  description: 'Vizualization of AI-assisted detected schools for Kenya, Rwanda, Sierra Leone, Niger, Honduras, and Kazakhstan.',
+  description: 'Vizualization of AI-assisted detected schools',
   attribution: {
     // role: 'Developed for',
     name: 'Developed for UNICEF',
