@@ -1,12 +1,11 @@
 module.exports = {
   baseurl: 'http://devseed.com/project-connect-visualizations',
-  title: 'Doc Seed',
-  description: 'A quick way to create a documentation site',
-
+  title: 'Project connect vizualizations',
+  description: 'Vizualization of AI-assisted detected schools for Kenya, Rwanda, Sierra Leone, Niger, Honduras, and Kazakhstan.',
   attribution: {
-    role: 'Developed for',
-    name: 'Generic Company',
-    logo: 'generic-logo-pos-hor.svg',
+    // role: 'Developed for',
+    name: 'Developed for UNICEF',
+    logo: 'unicef-logo.png',
     url: 'https://developmentseed.org'
   },
   sectionsMeta: {
