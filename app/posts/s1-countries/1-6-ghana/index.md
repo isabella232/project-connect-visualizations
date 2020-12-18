@@ -1,0 +1,16 @@
+---
+title: Ghana
+date: 2012-08-20
+layout: post.html
+---
+
+Ghana's schools compare map
+<div class="mapParent">
+    <iframe id="ghana"
+        width="100%"
+        height="600px"
+        src="http://devseed.com/project-connect-visualizations/countries/ghana/">
+    </iframe>
+</div>
+
+Large mode 👉 [Viewer](../../countries/ghana/)
