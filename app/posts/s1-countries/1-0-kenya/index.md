@@ -1,9 +1,10 @@
 ---
-title: Kenya's schools
+title: Kenya
 date: 2012-08-20
 layout: post.html
 ---
 
+Kenya's schools compare map.
 <div class="mapParent">
     <iframe id="kenya"
         width="100%"
