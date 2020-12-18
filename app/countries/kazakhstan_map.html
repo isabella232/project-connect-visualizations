@@ -3,7 +3,7 @@
 
 <head>
     <meta charset='utf-8' />
-    <title>Kenya's school compare map</title>
+    <title>Kazakhstan's school compare map</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
@@ -49,7 +49,7 @@
         <table width="200px">
             <tr>
                 <td colspan="3" align="center">
-                    <font size="2"><strong>KENYA - TRAINING DATA</strong></font>
+                    <font size="2"><strong>TRAINING DATA</strong></font>
                 </td>
             </tr>
             <tr>
@@ -60,7 +60,7 @@
                 </td>
                 </td>
                 <td style="font-size: 12px;">Known schools</td>
-                <td style="font-size: 12px;">20,422</td>
+                <td style="font-size: 12px;">5,998</td>
             </tr>
         </table>
     </div>
@@ -75,7 +75,7 @@
         <table width="200">
             <tr>
                 <td colspan="3" align="center">
-                    <font size="2"><strong>KENYA - ML SCHOOLS DETECTION</strong></font>
+                    <font size="2"><strong>ML SCHOOLS DETECTION</strong></font>
                 </td>
             </tr>
             <tr>
@@ -85,7 +85,7 @@
                     </div>
                 </td>
                 <td>Unmaped schools</td>
-                <td>7,648</td>
+                <td>1,556</td>
             </tr>
             <tr>
                 <td>
@@ -94,7 +94,7 @@
                     </div>
                 </td>
                 <td>Reconfirmed schools</td>
-                <td>9,968</td>
+                <td>2,433</td>
             </tr>
             <tr>
                 <td>
@@ -103,25 +103,25 @@
                     </div>
                 </td>
                 <td>Known schools</td>
-                <td>20,422</td>
+                <td>5,998</td>
             </tr>
         </table>
     </div>
 
 
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q';
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJja2l0OWc0dGswMDBvMnhudWs4bXZlajVmIn0.hBwtOZw1b2pbN4s3lfyJOw';
         var beforeMap = new mapboxgl.Map({
             container: 'before',
-            style: 'mapbox://styles/devseed/ckis8vwt60pvc19nnmpxcuza3',
-            center: [38.471, 0.319],
-            zoom: 6
+            style: 'mapbox://styles/devseed/ckirgvv9r06sb17p3d4ndr2r3',
+            center: [66.9, 48.36],
+            zoom: 4.7
         });
         var afterMap = new mapboxgl.Map({
             container: 'after',
             style: 'mapbox://styles/devseed/ckirid6ak006s19oej7tcjwq6',
-            center: [38.471, 0.319],
-            zoom: 6
+            center: [66.9, 48.36],
+            zoom: 4.7
         });
         var map = new mapboxgl.Compare(beforeMap, afterMap, {
             // Set this to enable comparing two maps by mouse movement:
