@@ -15,7 +15,7 @@ We applied AI-assisted school mapping workflow to search map schools in Kenya, R
 
 The schools map visualizations presented shown the comparison between the schools validated for training data and the results from ML outputs validation.
 
-En the maps for each countries we can see:
+In the maps for each countries we can see:
 
 - Red dots are the known schools.
 - Bright blue dots are the overlaps between known schools and the ML detection. This show how well are the ML detection.

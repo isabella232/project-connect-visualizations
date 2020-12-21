@@ -4,7 +4,6 @@ date: 2012-08-20
 layout: post.html
 ---
 
-Ghana's schools compare map
 <div class="mapParent">
     <iframe id="ghana"
         width="100%"
