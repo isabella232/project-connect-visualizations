@@ -18,5 +18,5 @@ The schools map visualizations presented shown the comparison between the school
 In the maps for each countries we can see:
 
 - Red dots are the schools training data.
-- Bright blue dots are the overlaps between known schools and the ML detection. This show how well are the ML detection.
+- Bright blue dots are the overlaps between known schools and the ML detections. This show how well are the ML detections.
 - Yellow dots are the unmapped schools that were found with ML and human validation.
