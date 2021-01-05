@@ -49,6 +49,7 @@
         <table width="200px">
             <tr>
                 <td colspan="3" align="center">
+                    <input type="checkbox" checked onchange="toggleCheckbox(this)">
                     <font size="2"><strong>EXISTING DATA (from OSM)</strong></font>
                 </td>
             </tr>
@@ -127,6 +128,14 @@
             // Set this to enable comparing two maps by mouse movement:
             // mousemove: true
         });
+        function toggleCheckbox(element){
+            console.log(beforeMap.getStyle().layers);
+            if (element.checked) {
+                beforeMap.setLayoutProperty('pc3-ghana-schools-pattern', 'visibility');
+            } else {
+                beforeMap.setLayoutProperty('pc3-ghana-schools-pattern', 'visibility', 'none');
+            }
+        }
         </script>
     ​
 </body>
