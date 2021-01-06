@@ -48,18 +48,21 @@
     <div style="position: absolute; text-align:left; z-index: 99999; background-color: #ffffff; bottom:10px; left:10px; border-radius: .25rem; box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);" class="h_before">
         <table width="200px">
             <tr>
-                <td colspan="3" align="center">
+                <td colspan="4" align="center">
                     <font size="2"><strong>EXISTING DATA</strong></font>
                 </td>
             </tr>
             <tr>
                 <td>
+                    <input type="checkbox" checked onchange="toggleCheckbox_knowschools(this)">
+                </td>
+                <td>
                     <div
                         style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #70EB52">
                     </div>
                 </td>
-                <td style="font-size: 12px;">Known schools</td>
-                <td style="font-size: 12px;">5,998</td>
+                <td style="font-size: 13px;">Known schools</td>
+                <td style="font-size: 13px;">5,998</td>
             </tr>
         </table>
     </div>
@@ -71,38 +74,47 @@
     </div>
 
     <div id="history" class="history">
-        <table width="200">
+        <table width="220px">
             <tr>
-                <td colspan="3" align="center">
+                <td colspan="4" align="center">
                     <font size="2"><strong>ML SCHOOLS DETECTION</strong></font>
                 </td>
             </tr>
             <tr>
                 <td>
+                    <input type="checkbox" checked onchange="toggleCheckbox1_unmapedschools(this)">
+                </td>
+                <td>
                     <div
                         style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #fffb24">
                     </div>
                 </td>
-                <td>Unmaped schools</td>
-                <td>1,556</td>
+                <td style="font-size: 13px;">Unmaped schools</td>
+                <td style="font-size: 13px;">1,556</td>
             </tr>
             <tr>
+                <td>
+                    <input type="checkbox" checked onchange="toggleCheckbox_reconfirmed(this)">
+                </td>
                 <td>
                     <div
                         style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #00f2ff">
                     </div>
                 </td>
-                <td>Reconfirmed schools</td>
-                <td>2,433</td>
+                <td style="font-size: 13px;">Reconfirmed schools</td>
+                <td style="font-size: 13px;">2,433</td>
             </tr>
             <tr>
+                <td>
+                    <input type="checkbox" checked onchange="toggleCheckbox_training(this)">
+                </td>
                 <td>
                     <div
                         style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #fd0808">
                     </div>
                 </td>
-                <td>School training data</td>
-                <td>5,998</td>
+                <td style="font-size: 13px;">School training data</td>
+                <td style="font-size: 13px;">5,998</td>
             </tr>
         </table>
     </div>
@@ -126,6 +138,38 @@
             // Set this to enable comparing two maps by mouse movement:
             // mousemove: true
         });
+        function toggleCheckbox_knowschools(element){
+            console.log(beforeMap.getStyle().layers);
+            if (element.checked) {
+                beforeMap.setLayoutProperty('pc3-kazakhstan-schools-pattern', 'visibility');
+            } else {
+                beforeMap.setLayoutProperty('pc3-kazakhstan-schools-pattern', 'visibility', 'none');
+            }
+        }
+        function toggleCheckbox1_unmapedschools(element){
+            console.log(afterMap.getStyle().layers);
+            if (element.checked) {
+                afterMap.setLayoutProperty('pc3-ml-kazakhstan-new-schools', 'visibility');
+            } else {
+                afterMap.setLayoutProperty('pc3-ml-kazakhstan-new-schools', 'visibility', 'none');
+            }
+        }
+        function toggleCheckbox_reconfirmed(element){
+            console.log(afterMap.getStyle().layers);
+            if (element.checked) {
+                afterMap.setLayoutProperty('pc3-ml-kazakhstan-schools', 'visibility');
+            } else {
+                afterMap.setLayoutProperty('pc3-ml-kazakhstan-schools', 'visibility', 'none');
+            }
+        }
+        function toggleCheckbox_training(element){
+            console.log(afterMap.getStyle().layers);
+            if (element.checked) {
+                afterMap.setLayoutProperty('pc3-kazakhstan-schools-pattern', 'visibility');
+            } else {
+                afterMap.setLayoutProperty('pc3-kazakhstan-schools-pattern', 'visibility', 'none');
+            }
+        }
     </script>
     ​
 </body>
