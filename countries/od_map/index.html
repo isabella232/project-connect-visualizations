@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>Kenya's school compare map</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css'
+        rel='stylesheet' type='text/css' />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #history {
+            position: absolute;
+            z-index: 1;
+            /* position: fixed; */
+            bottom: 10px;
+            right: 10px;
+            margin: 0;
+            font-size: 12px;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);
+            border-radius: .25rem;
+            background-color: whitesmoke;
+            padding: 3px;
+        }
+
+
+        .mapboxgl-ctrl-attrib {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: absolute; z-index: 99999; background-color: #ffffff; bottom:10px; left:10px; border-radius: .25rem; box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);" class="h_before">
+        <table width="200px">
+            <tr>
+                <td colspan="4" align="center">
+                    <font size="2"><strong>EXISTING DATA</strong></font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" checked onchange="toggleCheckbox_knowschools(this)">
+                </td>
+                <td>
+                    <div
+                        style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #70EB52">
+                    </div>
+                </td>
+                <td style="font-size: 13px;">Known schools</td>
+                <td style="font-size: 13px;">20,422</td>
+            </tr>
+        </table>
+    </div>
+    ​
+    ​<div>
+        <div id='before' class='map'></div>
+        <div id='after' class='map'></div>
+
+    </div>
+
+    <div id="history" class="history">
+        <table width="220px">
+            <tr>
+                <td colspan="4" align="center">
+                    <font size="2"><strong>ML SCHOOLS OBJECT DETECTION</strong></font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" checked onchange="toggleCheckbox1_unmapedschools(this)">
+                </td>
+                <td>
+                    <div
+                        style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #fffb24">
+                    </div>
+                </td>
+                <td style="font-size: 13px;">Unmaped schools</td>
+                <td style="font-size: 13px;">5,784</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" checked onchange="toggleCheckbox_reconfirmed(this)">
+                </td>
+                <td>
+                    <div
+                        style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #00f2ff">
+                    </div>
+                </td>
+                <td style="font-size: 13px;">Reconfirmed schools</td>
+                <td style="font-size: 13px;">6,882</td>
+            </tr>
+            <!-- <tr>
+                <td>
+                    <div
+                        style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #70EB52">
+                    </div>
+                </td>
+                <td>Known schools</td>
+                <td>20,422</td>
+            </tr> -->
+            <!-- <tr>
+                <td>
+                    <input type="checkbox" checked onchange="toggleCheckbox_training(this)">
+                </td>
+                <td>
+                    <div
+                        style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #fd0808">
+                    </div>
+                </td>
+                <td style="font-size: 13px;">School training data</td>
+                <td style="font-size: 13px;">6,000</td>
+            </tr> -->
+        </table>
+    </div>
+
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJja2l0OWc0dGswMDBvMnhudWs4bXZlajVmIn0.hBwtOZw1b2pbN4s3lfyJOw';
+        var beforeMap = new mapboxgl.Map({
+            container: 'before',
+            style: 'mapbox://styles/devseed/ckis8vwt60pvc19nnmpxcuza3',
+            center: [38.471, 0.319],
+            zoom: 6
+        });
+        var afterMap = new mapboxgl.Map({
+            container: 'after',
+            style: 'mapbox://styles/devseed/ckkcmda5q0q5y17ql952w9f4t',
+            center: [38.471, 0.319],
+            zoom: 6
+        });
+        var map = new mapboxgl.Compare(beforeMap, afterMap, {
+            // Set this to enable comparing two maps by mouse movement:
+            // mousemove: true
+        });
+        function toggleCheckbox_knowschools(element){
+            console.log(beforeMap.getStyle().layers);
+            if (element.checked) {
+                beforeMap.setLayoutProperty('pc3-kenya-schools-pattern', 'visibility');
+            } else {
+                beforeMap.setLayoutProperty('pc3-kenya-schools-pattern', 'visibility', 'none');
+            }
+        }
+        function toggleCheckbox1_unmapedschools(element){
+            console.log(afterMap.getStyle().layers);
+            if (element.checked) {
+                afterMap.setLayoutProperty('pc3-od-new-schools-first', 'visibility');
+            } else {
+                afterMap.setLayoutProperty('pc3-od-new-schools-first', 'visibility', 'none');
+            }
+        }
+        function toggleCheckbox_reconfirmed(element){
+            console.log(afterMap.getStyle().layers);
+            if (element.checked) {
+                afterMap.setLayoutProperty('pc3-od-reconfirmed-schools', 'visibility');
+            } else {
+                afterMap.setLayoutProperty('pc3-od-reconfirmed-schools', 'visibility', 'none');
+            }
+        }
+        // function toggleCheckbox_training(element){
+        //     console.log(afterMap.getStyle().layers);
+        //     if (element.checked) {
+        //         afterMap.setLayoutProperty('pc3-kenya-school-pattern-v1-1qen15', 'visibility');
+        //     } else {
+        //         afterMap.setLayoutProperty('pc3-kenya-school-pattern-v1-1qen15', 'visibility', 'none');
+        //     }
+        // }
+    </script>
+    ​
+</body>
+
+</html>
