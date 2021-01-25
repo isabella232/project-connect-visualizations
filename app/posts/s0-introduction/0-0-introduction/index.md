@@ -15,8 +15,9 @@ We applied AI-assisted school mapping workflow to search map schools in Kenya, R
 
 The schools map visualizations presented shown the comparison between the schools validated for training data and the results from ML outputs validation.
 
-In the maps for each countries we can see:
+In the maps for each country We can see:
 
-- Red dots are the schools training data.
-- Bright blue dots are the overlaps between known schools and the ML detections. This show how well are the ML detections.
-- Yellow dots are the unmapped schools that were found with ML and human validation.
+- Color green: Known schools are the validated schools from sources OSM and (or) UNICEF.
+- Color yellow: Unmmapped schools that predicted by ML models and confirmed by expert mappers that have clear school features/patterns, but currently are not on the map yet.
+- Color bright blue: Reconfirmed schools are schools that correctly detected by ML models and overlapped with known schools.
+- Color red: School training data were the schools used to train regional, country and global ML models.
