@@ -38,14 +38,17 @@
             padding: 3px;
         }
 
-
         .mapboxgl-ctrl-attrib {
-            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
         }
     </style>
 </head>
+
 <body>
-    <div style="position: absolute; z-index: 99999; background-color: #ffffff; bottom:10px; left:10px; border-radius: .25rem; box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);" class="h_before">
+    <div style="position: absolute; z-index: 99999; background-color: #ffffff; bottom:10px; left:10px; border-radius: .25rem; box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);"
+        class="h_before">
         <table width="200px">
             <tr>
                 <td colspan="4" align="center">
@@ -126,7 +129,7 @@
             // Set this to enable comparing two maps by mouse movement:
             // mousemove: true
         });
-        function toggleCheckbox_knowschools(element){
+        function toggleCheckbox_knowschools(element) {
             console.log(beforeMap.getStyle().layers);
             if (element.checked) {
                 beforeMap.setLayoutProperty('pc3-kenya-schools-pattern', 'visibility');
@@ -134,7 +137,7 @@
                 beforeMap.setLayoutProperty('pc3-kenya-schools-pattern', 'visibility', 'none');
             }
         }
-        function toggleCheckbox1_unmapedschools(element){
+        function toggleCheckbox1_unmapedschools(element) {
             console.log(afterMap.getStyle().layers);
             if (element.checked) {
                 afterMap.setLayoutProperty('pc3-od-new-schools-first', 'visibility');
@@ -142,7 +145,7 @@
                 afterMap.setLayoutProperty('pc3-od-new-schools-first', 'visibility', 'none');
             }
         }
-        function toggleCheckbox_reconfirmed(element){
+        function toggleCheckbox_reconfirmed(element) {
             console.log(afterMap.getStyle().layers);
             if (element.checked) {
                 afterMap.setLayoutProperty('pc3-od-reconfirmed-schools', 'visibility');
