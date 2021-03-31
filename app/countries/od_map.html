@@ -3,7 +3,7 @@
 
 <head>
     <meta charset='utf-8' />
-    <title>Sierra Leone's school compare map</title>
+    <title>Kenya's school compare map</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
@@ -38,10 +38,9 @@
             padding: 3px;
         }
 
+
         .mapboxgl-ctrl-attrib {
-            position: fixed;
-            top: 0;
-            right: 0;
+            display: none;
         }
     </style>
 </head>
@@ -63,7 +62,7 @@
                     </div>
                 </td>
                 <td style="font-size: 13px;">Known schools</td>
-                <td style="font-size: 13px;">7,699</td>
+                <td style="font-size: 13px;">20,422</td>
             </tr>
         </table>
     </div>
@@ -78,7 +77,7 @@
         <table width="220px">
             <tr>
                 <td colspan="4" align="center">
-                    <font size="2"><strong>ML SCHOOLS DETECTION</strong></font>
+                    <font size="2"><strong>ML SCHOOLS OBJECT DETECTION</strong></font>
                 </td>
             </tr>
             <tr>
@@ -91,7 +90,7 @@
                     </div>
                 </td>
                 <td style="font-size: 13px;">Unmaped schools</td>
-                <td style="font-size: 13px;">1,272</td>
+                <td style="font-size: 13px;">5,784</td>
             </tr>
             <tr>
                 <td>
@@ -103,19 +102,7 @@
                     </div>
                 </td>
                 <td style="font-size: 13px;">Reconfirmed schools</td>
-                <td style="font-size: 13px;">3,730</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" checked onchange="toggleCheckbox_training(this)">
-                </td>
-                <td>
-                    <div
-                        style="height: 0px; width: 30px; border-left:0px solid transparent; border-right:0px solid transparent; border-top:0px solid transparent; border-bottom:10px solid #fd0808">
-                    </div>
-                </td>
-                <td style="font-size: 13px;">School training data</td>
-                <td style="font-size: 13px;">7,699</td>
+                <td style="font-size: 13px;">6,882</td>
             </tr>
         </table>
     </div>
@@ -125,15 +112,15 @@
         mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJja2l0OWc0dGswMDBvMnhudWs4bXZlajVmIn0.hBwtOZw1b2pbN4s3lfyJOw';
         var beforeMap = new mapboxgl.Map({
             container: 'before',
-            style: 'mapbox://styles/devseed/ckirgvv9r06sb17p3d4ndr2r3',  
-            center: [-11.741, 8.363],
-            zoom: 7
+            style: 'mapbox://styles/devseed/ckis8vwt60pvc19nnmpxcuza3',
+            center: [38.471, 0.319],
+            zoom: 6
         });
         var afterMap = new mapboxgl.Map({
             container: 'after',
-            style: 'mapbox://styles/devseed/ckirid6ak006s19oej7tcjwq6',
-            center: [-11.741, 8.363],
-            zoom: 7
+            style: 'mapbox://styles/devseed/ckkcmda5q0q5y17ql952w9f4t',
+            center: [38.471, 0.319],
+            zoom: 6
         });
         var map = new mapboxgl.Compare(beforeMap, afterMap, {
             // Set this to enable comparing two maps by mouse movement:
@@ -142,36 +129,28 @@
         function toggleCheckbox_knowschools(element){
             console.log(beforeMap.getStyle().layers);
             if (element.checked) {
-                beforeMap.setLayoutProperty('pc3-sierraleone-schools-pattern', 'visibility');
+                beforeMap.setLayoutProperty('pc3-kenya-schools-pattern', 'visibility');
             } else {
-                beforeMap.setLayoutProperty('pc3-sierraleone-schools-pattern', 'visibility', 'none');
+                beforeMap.setLayoutProperty('pc3-kenya-schools-pattern', 'visibility', 'none');
             }
         }
         function toggleCheckbox1_unmapedschools(element){
             console.log(afterMap.getStyle().layers);
             if (element.checked) {
-                afterMap.setLayoutProperty('pc3-ml-sierraleone-new-schools', 'visibility');
+                afterMap.setLayoutProperty('pc3-od-new-schools-first', 'visibility');
             } else {
-                afterMap.setLayoutProperty('pc3-ml-sierraleone-new-schools', 'visibility', 'none');
+                afterMap.setLayoutProperty('pc3-od-new-schools-first', 'visibility', 'none');
             }
         }
         function toggleCheckbox_reconfirmed(element){
             console.log(afterMap.getStyle().layers);
             if (element.checked) {
-                afterMap.setLayoutProperty('pc3-ml-sierraleone-schools', 'visibility');
+                afterMap.setLayoutProperty('pc3-od-reconfirmed-schools', 'visibility');
             } else {
-                afterMap.setLayoutProperty('pc3-ml-sierraleone-schools', 'visibility', 'none');
+                afterMap.setLayoutProperty('pc3-od-reconfirmed-schools', 'visibility', 'none');
             }
         }
-        function toggleCheckbox_training(element){
-            console.log(afterMap.getStyle().layers);
-            if (element.checked) {
-                afterMap.setLayoutProperty('pc3-sierraleone-schools-pattern', 'visibility');
-            } else {
-                afterMap.setLayoutProperty('pc3-sierraleone-schools-pattern', 'visibility', 'none');
-            }
-        }
-        </script>
+    </script>
     ​
 </body>
 
