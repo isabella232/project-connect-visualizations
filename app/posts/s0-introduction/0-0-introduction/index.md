@@ -21,3 +21,15 @@ In the maps for each country We can see:
 - Color yellow: Unmmapped schools that predicted by ML models and confirmed by expert mappers that have clear school features/patterns, but currently are not on the map yet.
 - Color bright blue: Reconfirmed schools are schools that correctly detected by ML models and overlapped with known schools.
 - Color red: School training data were the schools used to train regional, country and global ML models.
+
+### Comparison of Object detection model and Classification model
+
+This visualization if for comparing the results from the Object Detection model and the Classification model in Kenya.
+
+In this map for Kenya We can see:
+
+- Color orange: Unmmapped schools that predicted the Object Detection ML model and confirmed by expert mappers that have clear school features/patterns, but currently are not on the map yet.
+- Color dark blue: Reconfirmed schools are schools that correctly detected by Object Detection ML model and overlapped with known schools.
+- Color yellow: Unmmapped schools that predicted by Classification ML model and confirmed by expert mappers that have clear school features/patterns, but currently are not on the map yet.
+- Color bright blue: Reconfirmed schools are schools that correctly detected by Classification ML model and overlapped with known schools.
+- Color red: School training data were the schools used to train regional, country and global ML models.
